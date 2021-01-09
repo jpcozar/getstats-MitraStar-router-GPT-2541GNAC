@@ -1,8 +1,8 @@
 # File: getdata
+# Author: Javier Polo Cozar
 # Description: get individual data statistics
 # Parameters: filename, interface, tx|rx, B(ytes), P(ackets), E(rrors), D(rops)
-# Autor: Javier Polo Cozar
-# Fecha: Jan-2021
+# Date: Jan-2021
 # Add compatibility with pyhton3
 
 import sys
@@ -14,7 +14,7 @@ else:
     getdata = False
     data = sys.argv[4]
     filename = sys.argv[1]
-    
+
     with open(filename) as origin_file:
         if (sys.argv[3] == "rx"):
             recibido = True
@@ -51,4 +51,3 @@ else:
                         break
             except IndexError:
                 print
-        
