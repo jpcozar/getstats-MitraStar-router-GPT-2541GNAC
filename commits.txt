@@ -1,0 +1,11 @@
+commit e456d9ea14ea86d5552d5b239ab131340a2a6f19
+Author: jpcozar <jpcozar@yahoo.es>
+Date:   Sat Jan 9 23:23:52 2021 +0100
+
+    Añadimos syncdata para sincronizar con NAS
+
+commit 6594c6f1c7897b9286e87b820cbd77563fdcc2e9
+Author: jpcozar <jpcozar@yahoo.es>
+Date:   Sat Jan 9 20:00:11 2021 +0100
+
+    Version produccion 8 Enero 2021
