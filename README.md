@@ -18,8 +18,21 @@ We need **pexpect** python library and **python 3.x** installed in order to work
 ### Installing pexpect
 `pip install pexpect`
 
-## Configuration: getting statistics file
+## Configuration: Exchanging keys
+We need to do a first manual ssh sesion with router to get keys, before expect (pexect) can work. Somethign like that:
+`ssh <user>@<router IP>`
+For example:
+`ssh 1234@192.168.1.1
+The authenticity of host '192.168.1.1 (192.168.1.1)' can't be established.
+RSA key fingerprint is SHA256:NGxis9N+wLGUWNCJHixmk5tfU7NOC+3PITfYrDnXooQ.
+Are you sure you want to continue connecting (yes/no)? yes
+Warning: Permanently added '192.168.1.1' (RSA) to the list of known hosts.
+1234@192.168.1.1's password:
+ fail to read file > exit
 
+Bye bye. Have a nice day!!!`
+
+## Execution: getting statistics file
 `python3 getallstats.py <router user> <router IP> <router password> <filename txt>`
 
 For example:
