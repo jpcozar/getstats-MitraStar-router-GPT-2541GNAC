@@ -19,7 +19,8 @@ We need **pexpect** python library and **python 3.x** installed in order to work
 `pip install pexpect`
 
 ## Configuration: Exchanging keys
-We need to do a first manual ssh sesion with router to get keys, before expect (pexect) can work. Somethign like that:
+We need to do a first manual ssh sesion with router to get key of router and add it to known hosts file so it isnt asked again, before expect (pexect) can work. Somethign like that:
+
 `ssh <user>@<router IP>`
 
 For example:
