@@ -4,50 +4,63 @@
 # Parameters: filename, interface, tx|rx, B(ytes), P(ackets), E(rrors), D(rops)
 # Date: Jan-2021
 # Add compatibility with pyhton3
+# Version 1.1
+# Add some errors checks
+# Interfaces can be: eth[0-4], veip0.[2-3], ppp0.1 for this router
 
 import sys
+import re                           # Library for using regular expression
 
 arguments = len(sys.argv) - 1
 if (arguments < 4):
     print("4 Arguments are needed: Filename, interface, tx|rx, B(tyes)|P(ackets)|E(rrors)|D(rops)")
 else:
     getdata = False
-    data = sys.argv[4]
     filename = sys.argv[1]
+    interface=sys.argv[2]
+    txrx=sys.argv[3]
+    data = sys.argv[4]
+    try:    # We catch error if file doesnt exit
+        with open(filename) as origin_file:
+            eth=re.compile('eth[0-4]') ; veip0=re.compile('veip0.[2-3]')
+            if (not eth.fullmatch(interface)) and (not veip0.fullmatch(interface)) and (interface!="ppp0.1") :
+                print("Not valid interface. It must be eth[0-4] or veip0.[2-3] or ppp0.1")
+                exit()
+            if (txrx!="rx" and txrx!="tx") :
+                print("Third argument must be tx or rx")
+                exit()
+            elif (txrx == "rx"):
+                received = True # We want rx
+            else:
+                received = False # We want tx
 
-    with open(filename) as origin_file:
-        if (sys.argv[3] == "rx"):
-            recibido = True
-        else:
-            recibido = False
+            validdata=re.compile('[B|P|E|D]')
+            if (not validdata.fullmatch(data)) :
+                print("data must be B or P or E or D. B(ytes), P(ackets), E(rrors) or D(rops)")
+                exit()
+            for line in origin_file:
+                if not interface in line: # That's not interface we want
+                    continue
+                try:
+                    line = line.split()
+                    if (not received):
+                        if (getdata == False):
+                            getdata = True
+                            continue
 
-        for line in origin_file:
-            if not sys.argv[2] in line:
-                continue
-            try:
-                line = line.split()
-                if (recibido):
-                    if (data == "B"):
-                        print(line[2])
-                    if (data == "P"):
-                        print(line[3])
-                    if (data == "E"):
-                        print(line[4])
-                    if (data == "D"):
-                        print(line[5])
-                    break
-                else:
-                    if (getdata == False):
-                        getdata = True
-                    else:
+                    if ((getdata==True) or received) :
                         if (data == "B"):
                             print(line[2])
-                        if (data == "P"):
+                        elif (data == "P"):
                             print(line[3])
-                        if (data == "E"):
+                        elif (data == "E"):
                             print(line[4])
-                        if (data == "D"):
+                        elif (data == "D"):
                             print(line[5])
+
                         break
-            except IndexError:
-                print
+
+                except IndexError:
+                    print
+    except FileNotFoundError:
+        print("File {} doesn't exist".format(filename))
