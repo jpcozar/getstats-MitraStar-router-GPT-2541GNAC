@@ -1,0 +1,33 @@
+showlanstats
+Received Counters:
+Interface Status    Total                                  Multicast           Unicast Broadcast
+                    Bytes       Pkts       Errs    Drops   Bytes       Pkts    Pkts    Pkts
+     eth0 Disabled  0           0          0       0       0           0       0       0      
+     eth1 Up        1960033357  23306747   0       0       0           15977492 7286062 43193  
+     eth2 Up        2176291502  34358358   0       0       0           433174  33571113 354071 
+     eth3 Up        2790330474  40831942   0       0       0           479396  40056551 295995 
+     eth4 Up        1604564496  27551336   0       0       0           587921  26932131 31284  
+
+Transmitted Counters:
+Interface Status    Total                                  Multicast           Unicast Broadcast
+                    Bytes       Pkts       Errs    Drops   Bytes       Pkts    Pkts    Pkts
+     eth0 Disabled  0           0          0       0       0           0       0       0      
+     eth1 Up        1830675378  329393018  0       0       0           241030971 86555952 1806095
+     eth2 Up        2728752513  43076707   0       0       0           1434552 40099710 1542445
+     eth3 Up        291347032   42917254   0       0       0           1236724 40124991 1555539
+     eth4 Up        2106808316  40476183   0       0       0           2050126 35193428 3232629
+ showwanstats
+Received Counters:
+Interface VlanMuxId   Total                                  Multicast           Unicast Broadcast
+                      Bytes       Pkts       Errs    Drops   Bytes       Pkts    Pkts    Pkts
+  veip0.2         3   43687147    253965     0       0       1170156     22503   231462  0      
+  veip0.3         2   1026218209  66628995   0       0       0           411842  66217153 0      
+   ppp0.1         6   3380349324  2829880791 0       0       0           0       2829880791 0      
+
+Transmitted Counters:
+Interface VlanMuxId   Total                                  Multicast           Unicast Broadcast
+                      Bytes       Pkts       Errs    Drops   Bytes       Pkts    Pkts    Pkts
+  veip0.2         3   47069364    231740     0       0       0           0       231740  0      
+  veip0.3         2   1282143277  11433375   0       0       0           0       11433375 0      
+   ppp0.1         6   3411470041  2840479215 0       0       0           0       2840479215 0      
+ 
