@@ -17,7 +17,10 @@ else:
     password = sys.argv[3]
     filename=sys.argv[4]
 
-    child = pexpect.spawn('ssh ' + user + '@' + IP)
+# From OpenSSH 8.8 we need to add -o HostKeyAlgorithms=+ssh-rsa
+# PubkeyAcceptedAlgorithms=+ssh-rsa
+
+    child = pexpect.spawn('ssh -oHostKeyAlgorithms=+ssh-rsa -oStrictHostKeyChecking=no ' + user + '@' + IP)
     child.expect(user + '@' + IP + "'s password: ")
     child.sendline(password)
     child.expect(' fail to read file > ')
